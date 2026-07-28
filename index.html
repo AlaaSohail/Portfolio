@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Alaa Amer | Flutter Developer
+    </title>
+
+    <meta name="description"
+        content="Alaa Amer is a Flutter Developer specializing in modern mobile applications, Firebase, and Backend development.">
+
+    <meta name="keywords" content="Alaa Amer, Flutter Developer, Dart, Firebase, Node.js, Mobile Developer">
+
+    <meta name="author" content="Alaa Amer">
+    <link rel="icon" type="image/png" href="images/favicon.webp" sizes="32x32">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Alaa Amer | Flutter Developer">
+
+    <meta property="og:description"
+        content="Building modern mobile applications with Flutter and scalable backend solutions.">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:url" content="https://alaasohail.com">
+
+    <meta property="og:image" content="https://alaasohail.com/images/preview.webp">
+
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Inter:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;600&family=Geist:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            font-family: 'Geist', sans-serif;
+            background: #0F1419;
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: #0F1419;
+            min-height: 100%;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .font-display {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Colors */
+        :root {
+            --primary-navy: #0F1419;
+            --accent-cyan: #00D9FF;
+            --warm-sienna: #C44E1F;
+            --neutral-off-white: #F5F3F0;
+            --muted-gray: #6B7280;
+        }
+
+        /* Animations */
+        @keyframes word-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce-arrow {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes slide-left {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-right {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pill-scale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes ripple {
+            from {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Utility classes */
+        .animate-word {
+            animation: word-fade-in 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .bounce-arrow {
+            animation: bounce-arrow 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .animate-slide-left {
+            animation: slide-left 0.75s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-right {
+            animation: slide-right 0.75s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-up {
+            animation: fade-up 0.75s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-pill {
+            animation: pill-scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+        }
+
+        .ripple-span {
+            animation: ripple 0.7s ease-out;
+        }
+
+        /* Custom Cursor */
+        #cursor-dot {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            mix-blend-mode: screen;
+            transform: translate(-6px, -6px);
+        }
+
+
+        /* Scroll Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            z-index: 50;
+        }
+
+        #scroll-progress-bar {
+            height: 100%;
+            background: var(--accent-cyan);
+            width: 0%;
+            transition: width 0.075s;
+        }
+
+        /* Label */
+        .label {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--accent-cyan);
+            font-size: 11px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            margin-top: 16px;
+            margin-bottom: 64px;
+        }
+
+        .divider-inner {
+            height: 100%;
+            background: var(--accent-cyan);
+            width: 0%;
+            transition: width 1s ease-out;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(15, 20, 25, 0.98), rgba(10, 16, 22, 0.98));
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(110px);
+        }
+
+        .orb-1 {
+            width: 700px;
+            height: 700px;
+            opacity: 0.17;
+            background: var(--accent-cyan);
+            top: -200px;
+            left: -300px;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 520px;
+            height: 520px;
+            opacity: 0.11;
+            background: var(--warm-sienna);
+            top: 200px;
+            right: -150px;
+            animation: float 18s ease-in-out infinite 2s;
+        }
+
+        .orb-3 {
+            width: 380px;
+            height: 380px;
+            opacity: 0.09;
+            background: var(--accent-cyan);
+            bottom: -100px;
+            left: 50%;
+            animation: float 20s ease-in-out infinite 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, 30px);
+            }
+        }
+
+        .grid-background {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+            background-size: 64px 64px;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 28px 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 20;
+        }
+
+        .nav-logo {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--accent-cyan);
+            font-size: 14px;
+            letter-spacing: 0.3em;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            width: 0;
+            transition: width 0.3s ease-out;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 56px;
+            width: 100%;
+        }
+
+        .hero-label {
+            animation-delay: 0.05s;
+        }
+
+        .hero-title {
+            font-size: clamp(52px, 8.5vw, 100px);
+            font-weight: 900;
+            line-height: 1.01;
+            letter-spacing: -0.025em;
+            margin-top: 28px;
+            margin-bottom: 32px;
+        }
+
+        .hero-title span {
+            display: block;
+            animation: word-fade-in 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .hero-title span:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .hero-title span:nth-child(2) {
+            animation-delay: 0.34s;
+        }
+
+        .hero-title span:nth-child(3) {
+            animation-delay: 0.48s;
+        }
+
+        .hero-description {
+            color: var(--muted-gray);
+            font-size: 17px;
+            line-height: 1.6;
+            max-width: 480px;
+            margin-bottom: 40px;
+            animation: word-fade-in 0.8s ease-out forwards;
+            animation-delay: 0.72s;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            animation: word-fade-in 0.8s ease-out forwards;
+            animation-delay: 0.92s;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+
+        .btn-primary {
+            background: var(--accent-cyan);
+            color: #0F1419;
+            box-shadow: 0 0 0 rgba(0, 217, 255, 0);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.28);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary span:last-child {
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover span:last-child {
+            transform: translateX(4px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(0, 217, 255, 0.5);
+            color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* Scroll Hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+
+        .scroll-hint.hidden {
+            opacity: 0;
+        }
+
+        .scroll-label {
+            font-family: 'IBM Plex Mono', monospace;
+            color: rgba(107, 114, 128, 0.7);
+            font-size: 10px;
+            letter-spacing: 0.28em;
+        }
+
+        .scroll-arrow {
+            color: var(--accent-cyan);
+            font-size: 16px;
+            animation: bounce-arrow 1.5s ease-in-out infinite;
+        }
+
+        /* Section */
+        section {
+            padding: 96px 56px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: clamp(26px, 3.5vw, 42px);
+            font-weight: 700;
+            line-height: 1.12;
+            margin-bottom: 24px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 40px;
+        }
+
+        .about-text {
+            transition: all 0.7s;
+            opacity: 0;
+            transform: translateY(32px);
+        }
+
+        .about-text.in-view {
+            opacity: 1;
+            transform: none;
+        }
+
+        .about-text p {
+            color: #9aa4b2;
+            line-height: 1.6;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .about-skills {
+            transition: all 0.7s;
+            opacity: 0;
+            transform: translateY(32px);
+            transition-delay: 0.2s;
+        }
+
+        .about-skills.in-view {
+            opacity: 1;
+            transform: none;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .skill-badge {
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            font-family: 'IBM Plex Mono', monospace;
+            transition: all 0.3s;
+            cursor: pointer;
+            animation: pill-scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+        }
+
+        .skill-badge:hover {
+            border-color: rgba(0, 217, 255, 0.5);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 18px rgba(0, 217, 255, 0.12);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            background: #141C24;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-card.animate-slide-left,
+        .project-card.animate-slide-right {
+            animation-name: inherit;
+            opacity: 0;
+        }
+
+        .project-card.in-view.animate-left {
+            animation: slide-left 0.75s ease-out forwards;
+        }
+
+        .project-card.in-view.animate-right {
+            animation: slide-right 0.75s ease-out forwards;
+        }
+
+        .project-top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            z-index: 10;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-top-bar {
+            transform: scaleX(1);
+        }
+
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            height: 288px;
+            background: #1a2330;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.06);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 20, 25, 0.65);
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay p {
+            color: #9aa4b2;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .project-body {
+            padding: 28px;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .project-category {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .project-year {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--muted-gray);
+            font-size: 11px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            margin: 8px 0 16px;
+            transition: color 0.3s;
+        }
+
+        .project-card:hover .project-title {
+            color: inherit;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .project-details {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 0;
+        }
+
+        .project-details li {
+            color: #9aa4b2;
+            font-size: 13px;
+            line-height: 1.55;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .project-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+        }
+
+        .project-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            padding: 4px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--muted-gray);
+        }
+
+        .project-cta {
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--muted-gray);
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover .project-cta {
+            color: inherit;
+        }
+
+        .project-cta span {
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover .project-cta span {
+            transform: translateX(4px);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s;
+            animation: fade-up 0.75s ease-out forwards;
+            opacity: 0;
+        }
+
+        .service-card:hover {
+            border-color: rgba(0, 217, 255, 0.35);
+            background: rgba(0, 217, 255, 0.03);
+        }
+
+        .service-icon {
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s;
+            width: 100%;
+        }
+
+        .service-icon img {
+            width: 84px;
+            height: 84px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .service-card.in-view .service-icon {
+            transform: scale(1);
+        }
+
+        .service-card:not(.in-view) .service-icon {
+            transform: scale(0.7);
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+
+        .service-card:hover .service-title {
+            color: var(--accent-cyan);
+        }
+
+        .service-description {
+            color: #9aa4b2;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 56px;
+            max-width: 100%;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: clamp(52px, 7vw, 84px);
+            font-weight: 900;
+            line-height: 1;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .stat-suffix {
+            color: var(--accent-cyan);
+        }
+
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--muted-gray);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(0, 217, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-quote {
+            color: var(--neutral-off-white);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-role {
+            color: var(--muted-gray);
+            font-size: 13px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: all 0.7s;
+            opacity: 0;
+            transform: translateY(36px);
+            text-align: center;
+        }
+
+        .cta-content.in-view {
+            opacity: 1;
+            transform: none;
+        }
+
+        .cta-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .divider-line {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            flex: 1;
+            max-width: 120px;
+        }
+
+        .cta-title {
+            font-size: clamp(40px, 6.5vw, 82px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+
+        .cta-description {
+            color: var(--muted-gray);
+            font-size: 17px;
+            max-width: 448px;
+            margin: 0 auto 48px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            position: relative;
+            overflow: hidden;
+            padding: 16px 40px;
+            background: var(--accent-cyan);
+            color: #0F1419;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-cta:hover {
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.32);
+        }
+
+        .btn-cta span:last-child {
+            transition: transform 0.3s;
+        }
+
+        .btn-cta:hover span:last-child {
+            transform: translateX(4px);
+        }
+
+        .cta-email {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            color: var(--muted-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .cta-email:hover {
+            color: var(--accent-cyan);
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(0, 217, 255, 0.92);
+            color: #0F1419;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(12px);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 48px 56px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-branding {
+            flex: 1;
+        }
+
+        .footer-name {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--muted-gray);
+            font-size: 11px;
+            margin-top: 4px;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .footer-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--muted-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+            transform: scale(1.05);
+        }
+
+        .experience-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .experience-pill {
+            padding: 8px 14px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            background: rgba(0, 217, 255, 0.06);
+            color: var(--neutral-off-white);
+            font-size: 13px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .process-card {
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .process-number {
+            color: var(--accent-cyan);
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            margin-bottom: 8px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .process-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .process-text {
+            color: var(--muted-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-copyright {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--muted-gray);
+            font-size: 11px;
+        }
+
+        /* Responsive - Mobile First */
+        @media (max-width: 1200px) {
+            section {
+                padding: 64px 32px;
+            }
+
+            .hero-content {
+                padding: 0 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 24px;
+                gap: 24px;
+            }
+
+            .nav-logo {
+                font-size: 12px;
+                letter-spacing: 0.2em;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .hero-section {
+                height: auto;
+                min-height: 100vh;
+                padding-top: 60px;
+            }
+
+            .hero-content {
+                padding: 0 24px;
+                width: 100%;
+            }
+
+            .hero-title {
+                font-size: clamp(32px, 7vw, 52px) !important;
+                margin-top: 20px;
+                margin-bottom: 24px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+                margin-bottom: 28px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 24px;
+            }
+
+            .scroll-hint {
+                bottom: 20px;
+            }
+
+            section {
+                padding: 48px 24px;
+                max-width: 100%;
+            }
+
+            section h2 {
+                font-size: clamp(24px, 5vw, 36px) !important;
+            }
+
+            .label {
+                font-size: 10px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-image {
+                height: 240px;
+            }
+
+            .project-body {
+                padding: 20px;
+            }
+
+            .project-title {
+                font-size: 18px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 24px;
+            }
+
+            .service-icon {
+                font-size: 24px;
+                margin-bottom: 16px;
+            }
+
+            .service-title {
+                font-size: 16px;
+            }
+
+            .service-description {
+                font-size: 13px;
+            }
+
+            .stats-section {
+                padding: 48px 24px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .stat-value {
+                font-size: clamp(40px, 5vw, 64px) !important;
+            }
+
+            .stat-label {
+                font-size: 10px;
+            }
+
+            .cta-content {
+                padding: 0 24px;
+            }
+
+            .cta-title {
+                font-size: clamp(28px, 6vw, 48px) !important;
+            }
+
+            .cta-description {
+                font-size: 15px;
+                max-width: 100%;
+            }
+
+            .cta-divider {
+                gap: 16px;
+            }
+
+            .divider-line {
+                max-width: 80px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 16px;
+            }
+
+            .btn-cta {
+                width: 100%;
+                justify-content: center;
+            }
+
+            footer {
+                padding: 32px 24px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .footer-branding {
+                flex: none;
+            }
+
+            .footer-name {
+                font-size: 18px;
+            }
+
+            .footer-subtitle {
+                font-size: 10px;
+            }
+
+            .footer-links {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+
+            .footer-links a {
+                font-size: 11px;
+            }
+
+            .footer-copyright {
+                font-size: 10px;
+            }
+
+            .skills-grid {
+                gap: 10px;
+            }
+
+            .skill-badge {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            .project-tag {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+
+            .project-category {
+                font-size: 9px;
+            }
+
+            .project-year {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 12px 16px;
+                gap: 16px;
+            }
+
+            .nav-logo {
+                font-size: 11px;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .hero-content {
+                padding: 0 16px;
+            }
+
+            .hero-title {
+                font-size: clamp(24px, 6vw, 40px) !important;
+                margin-top: 16px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+                max-width: 100%;
+            }
+
+            .scroll-label {
+                font-size: 9px;
+            }
+
+            .scroll-arrow {
+                font-size: 14px;
+            }
+
+            section {
+                padding: 40px 16px;
+            }
+
+            .label {
+                font-size: 9px;
+            }
+
+            .divider {
+                margin-top: 12px;
+                margin-bottom: 40px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+
+            .btn-primary {
+                padding: 12px 24px;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
+            .project-body {
+                padding: 16px;
+            }
+
+            .project-title {
+                font-size: 16px;
+            }
+
+            .project-header {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .stat-value {
+                font-size: clamp(32px, 4vw, 48px) !important;
+            }
+
+            .cta-title {
+                font-size: clamp(24px, 5vw, 40px) !important;
+                line-height: 1.2;
+            }
+
+            .cta-description {
+                font-size: 14px;
+            }
+
+            .cta-divider {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .divider-line {
+                height: 1px;
+                width: 100%;
+                max-width: none;
+            }
+
+            .btn-cta {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            footer {
+                padding: 24px 16px;
+            }
+
+            .footer-content {
+                gap: 16px;
+            }
+
+            .footer-name {
+                font-size: 16px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+            }
+
+            .footer-links a {
+                display: block;
+                padding: 8px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor-dot"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress">
+        <div id="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-background"></div>
+
+        <nav>
+            <span class="nav-logo">A S A.</span>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <div class="label hero-label">Open to opportunities · Flutter & Software Engineering</div>
+
+            <h1 class="hero-title">
+                <span>I build apps that</span>
+                <span>feel native and</span>
+                <span>scale effortlessly.</span>
+            </h1>
+
+            <p class="hero-description">
+                Flutter developer building mobile products that feel native, thoughtful, and dependable — from the first
+                idea to launch day.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#work" class="btn btn-primary">
+                    <span>View Work</span>
+                    <span>→</span>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    Let's Talk
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-hint" id="scroll-hint">
+            <span class="scroll-label">SCROLL</span>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="label">About</div>
+        <div class="divider">
+            <div class="divider-inner"></div>
+        </div>
+
+        <div class="about-content">
+            <div class="about-text" data-in-view="about-text">
+                <h2>I transform ideas into intuitive, high-quality mobile experiences.</h2>
+                <p>
+                    I'm Alaa S. Amer — a Flutter developer who enjoys turning product ideas into apps people actually
+                    want to use every day. I care deeply about the small details that make an app feel fast, calm, and
+                    trustworthy, from the first tap to the final release.
+                </p>
+                <p>
+                    My work sits at the intersection of product thinking, clean architecture, and polished UI. I build
+                    solutions that are not only beautiful, but also practical for real users, strong for teams, and
+                    ready to scale over time.
+                </p>
+                <div class="experience-strip">
+                    <span class="experience-pill">4+ Years Building Apps</span>
+                    <span class="experience-pill">Cross-platform Flutter</span>
+                    <span class="experience-pill">Firebase & Backend</span>
+                </div>
+            </div>
+
+            <div class="about-skills" data-in-view="about-skills">
+                <div class="label">Core skills</div>
+                <div class="skills-grid" id="skills-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="work">
+        <div class="label">Selected Work</div>
+        <div class="divider">
+            <div class="divider-inner"></div>
+        </div>
+        <div class="projects-grid" id="projects-grid"></div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="label">Services</div>
+        <div class="divider">
+            <div class="divider-inner"></div>
+        </div>
+        <div class="services-grid" id="services-grid"></div>
+    </section>
+
+    <!-- Process Section -->
+    <section>
+        <div class="label">How I Work</div>
+        <div class="divider">
+            <div class="divider-inner"></div>
+        </div>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-number">01 / Discovery</div>
+                <div class="process-title">Understand the vision</div>
+                <div class="process-text">I clarify goals, users, and product requirements before a single line of code
+                    is written.</div>
+            </div>
+            <div class="process-card">
+                <div class="process-number">02 / Design & Build</div>
+                <div class="process-title">Create the experience</div>
+                <div class="process-text">I turn ideas into polished UI flows and high-quality Flutter implementations.
+                </div>
+            </div>
+            <div class="process-card">
+                <div class="process-number">03 / Launch & Improve</div>
+                <div class="process-title">Ship with confidence</div>
+                <div class="process-text">I focus on performance, stability, and continuous improvements after launch.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid" id="stats-grid"></div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="label">Testimonials</div>
+        <div class="divider">
+            <div class="divider-inner"></div>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-quote">“Alaa transformed our app idea into a polished product with rare attention
+                    to detail and speed.”</p>
+                <div class="testimonial-author">Sarah M.</div>
+                <div class="testimonial-role">Product Lead</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">“Reliable, thoughtful, and incredibly fast in execution. The final app felt
+                    premium from day one.”</p>
+                <div class="testimonial-author">Omar H.</div>
+                <div class="testimonial-role">Startup Founder</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">“Great communication, strong architecture, and beautiful UI. Exactly what
+                    we needed.”</p>
+                <div class="testimonial-author">Nora K.</div>
+                <div class="testimonial-role">Operations Manager</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact">
+        <div class="cta-content" data-in-view="cta">
+            <div class="cta-divider">
+                <div class="divider-line"></div>
+                <div class="label">Let's Connect</div>
+                <div class="divider-line"></div>
+            </div>
+
+            <h2 class="cta-title">Got an app to build?</h2>
+            <p class="cta-description">
+                Building exceptional Flutter experiences that combine beautiful design, powerful performance, and
+                scalable architecture — from concept to production.
+            </p>
+
+            <div class="cta-buttons">
+                <button class="btn-cta" id="cta-button">
+                    <span>Let's Work Together</span>
+                    <span>→</span>
+                </button>
+                <a href="mailto:3laa.sohail@gmail.com" class="cta-email">3laa.sohail@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">
+                <div class="footer-name">Alaa S. Amer</div>
+                <div class="footer-subtitle">Flutter Developer & Software Engineer</div>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/alaasohail" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/AlaaSohail" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.instagram.com/alaa.sohaill" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.facebook.com/alaa.sohaill" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </div>
+
+            <div class="footer-copyright">© 2026 · ALAA SOHAIL AMER . FLUTTER PORTFOLIO.</div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+    <script>
+        // Data
+        const PROJECTS = [
+            {
+                id: 1,
+                title: 'Gymmer',
+                category: 'Flutter · Mobile App',
+                year: '2025',
+                tags: ['Flutter', 'Dart', 'Firebase', 'BLoC'],
+                description: 'Cross-platform Fitness app for iOS & Android with personalized workout plans, progress tracking, and social features for a community of fitness enthusiasts.',
+                image: 'images/gymmer.webp',
+                color: '#00D9FF',
+                slug: 'gymmer',
+            },
+
+            {
+                id: 2,
+                title: 'Plant Care AI',
+                category: 'Flutter · Healthcare',
+                year: '2026',
+                tags: ['Flutter', 'Dart', 'Node.js', 'PostgreSQL', 'REST API'],
+                description: 'AI-powered plant care app that identifies plant species, diagnoses health issues, and provides care recommendations ',
+                image: 'images/plant.webp',
+                color: '#00D9FF',
+                slug: 'plant-care-ai',
+            },
+            {
+                id: 3,
+                title: 'Shoppe E-commerce',
+                category: 'Flutter · E-commerce',
+                year: '2023',
+                tags: ['Flutter', 'BLoC', 'Firebase', 'REST API'],
+                description: 'A polished shopping experience designed for smooth browsing, fast cart updates, and a checkout flow that feels premium from first tap to purchase.',
+                image: 'images/shop.webp',
+                color: '#C44E1F',
+                slug: 'shoppe-ecommerce',
+            },
+            {
+                id: 4,
+                title: 'OpsBoard',
+                category: 'Flutter · Productivity',
+                year: '2024',
+                tags: ['Flutter', 'Dart', 'Firebase', 'Offline Sync'],
+                description: 'A daily operations app for small teams to organize tasks, deadlines, and handoffs in one focused workspace built for fast, repeatable work.',
+                details: [
+                    'Designed the core workflow for task tracking and team handoff.',
+                    'Built role-based views and reminders for better daily coordination.',
+                    'Focused on reliability and speed for teams working on the go.'
+                ],
+                image: 'images/plant.webp',
+                color: '#00D9FF',
+                slug: 'opsboard',
+            },
+        ];
+
+        const SERVICES = [
+            {
+                icon: 'images/flutter.gif',
+                title: 'Flutter Development',
+                description: 'Build beautiful, high-performance apps for iOS, Android, and web from a single codebase — pixel-perfect and production-ready.',
+            },
+            {
+                icon: 'images/Programming.gif',
+                title: 'Backend & APIs',
+                description: 'Design and build scalable REST APIs, real-time systems, and cloud integrations that power reliable mobile experiences.',
+            },
+            {
+                icon: 'images/infrastructure.gif',
+                title: 'Architecture & Consulting',
+                description: 'Audit existing codebases, define state management patterns, and set engineering standards that let teams move fast without breaking things.',
+            },
+            {
+                icon: 'images/fire.gif',
+                title: 'Firebase & Cloud Services',
+                description: 'Integrate Firebase services like Authentication, Firestore, and Cloud Functions to build secure, scalable, and real-time apps with ease.',
+
+            },
+            {
+                icon: 'images/git.gif',
+                title: 'Git & Version Control',
+                description: 'Master Git workflows, branching strategies, and collaborative development practices to streamline team productivity and code quality.',
+            }
+
+        ];
+
+        const SKILLS = [
+            'Flutter & Dart', 'Firebase', 'REST APIs', 'BLoC / Cubit',
+            'Node.js', 'PostgreSQL', 'Clean Architecture',
+            'Git & GitHub', 'Unit & Integration Testing', 'UI/UX Design Principles',
+            'Cross-Platform Development', 'Postman', 'Figma', 'Agile Methodologies'
+
+        ];
+
+        const STATS = [
+            { value: 20, label: 'Apps shipped', suffix: '+' },
+            { value: 4, label: 'Years of craft', suffix: '' },
+            { value: 99, label: 'Client satisfaction', suffix: '%' },
+        ];
+
+        // Render Projects
+        const projectsGrid = document.getElementById('projects-grid');
+        PROJECTS.forEach((project, index) => {
+            const card = document.createElement('a');
+            card.href = project.slug ? `project-detail.html?project=${project.slug}` : '#';
+            card.className = `project-card ${index % 2 === 0 ? 'animate-left' : 'animate-right'}`;
+            card.innerHTML = `
+                <div class="project-top-bar" style="background: ${project.color}"></div>
+                <div class="project-image">
+                    <img src="${project.image}" alt="${project.title}" loading="lazy" decoding="async">
+                    <div class="project-overlay">
+                        <p>${project.description}</p>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-header">
+                        <span class="project-category" style="color: ${project.color}">${project.category}</span>
+                        <span class="project-year">${project.year}</span>
+                    </div>
+                    <h3 class="project-title">${project.title}</h3>
+                    <div class="project-tags">
+                        ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                    </div>
+                    ${project.details ? `<ul class="project-details">${project.details.map(detail => `<li>${detail}</li>`).join('')}</ul>` : ''}
+                    <div class="project-cta">
+                        <span>View Project</span>
+                        <span>→</span>
+                    </div>
+                </div>
+            `;
+            projectsGrid.appendChild(card);
+        });
+
+        // Render Services
+        const servicesGrid = document.getElementById('services-grid');
+        SERVICES.forEach((service, index) => {
+            const card = document.createElement('div');
+            card.className = 'service-card';
+            card.style.animationDelay = `${index * 0.13}s`;
+            card.innerHTML = `
+                <div class="service-icon">
+                    <img src="${service.icon}" alt="${service.title}" loading="lazy" decoding="async">
+                </div>
+                <h3 class="service-title">${service.title}</h3>
+                <p class="service-description">${service.description}</p>
+            `;
+            servicesGrid.appendChild(card);
+        });
+
+        // Render Skills
+        const skillsGrid = document.getElementById('skills-grid');
+        SKILLS.forEach((skill, index) => {
+            const badge = document.createElement('span');
+            badge.className = 'skill-badge animate-pill';
+            badge.style.animationDelay = `${index * 0.08}s`;
+            badge.textContent = skill;
+            skillsGrid.appendChild(badge);
+        });
+
+        // Render Stats
+        const statsGrid = document.getElementById('stats-grid');
+        STATS.forEach((stat, index) => {
+            const item = document.createElement('div');
+            item.className = 'stat-item';
+            item.innerHTML = `
+                <div class="stat-value">
+                    <span class="stat-count">0</span><span class="stat-suffix">${stat.suffix}</span>
+                </div>
+                <div class="stat-label">${stat.label}</div>
+            `;
+            item.dataset.value = stat.value;
+            statsGrid.appendChild(item);
+        });
+
+        // Intersection Observer
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+
+                        // Count up animation for stats
+                        if (entry.target.classList.contains('stat-item')) {
+                            const count = entry.target.dataset.value;
+                            const countEl = entry.target.querySelector('.stat-count');
+                            let cur = 0;
+                            const step = count / 100;
+                            const timer = setInterval(() => {
+                                cur += step;
+                                if (cur >= count) {
+                                    countEl.textContent = count;
+                                    clearInterval(timer);
+                                } else {
+                                    countEl.textContent = Math.floor(cur);
+                                }
+                            }, 16);
+                        }
+
+                        // Divider animation
+                        if (entry.target.nextElementSibling?.classList.contains('divider')) {
+                            entry.target.nextElementSibling.querySelector('.divider-inner').classList.add('in-view');
+                        }
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            // Observe dividers
+            document.querySelectorAll('.divider').forEach(divider => {
+                const inner = divider.querySelector('.divider-inner');
+                const dividerObserver = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        inner.style.width = '100%';
+                    }
+                }, { threshold: 0.15 });
+                dividerObserver.observe(divider);
+            });
+
+            // Observe project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                const cardObserver = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        card.classList.add('in-view');
+                    }
+                }, { threshold: 0.1 });
+                cardObserver.observe(card);
+            });
+
+            // Observe service cards
+            document.querySelectorAll('.service-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Observe stats
+            document.querySelectorAll('.stat-item').forEach(item => {
+                observer.observe(item);
+            });
+
+            // Observe about section
+            document.querySelectorAll('[data-in-view]').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe CTA
+            document.querySelectorAll('[data-in-view="cta"]').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Custom cursor
+        const cursor = document.getElementById('cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Scroll tracking
+        function updateScrollProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollHeight > 0 ? window.scrollY / scrollHeight : 0;
+            document.getElementById('scroll-progress-bar').style.width = (progress * 100) + '%';
+
+            // Hide scroll hint
+            const hint = document.getElementById('scroll-hint');
+            hint.classList.toggle('hidden', window.scrollY > 60);
+        }
+
+        const backToTopButton = document.getElementById('back-to-top');
+
+        // CTA button ripple effect and email action
+        document.getElementById('cta-button').addEventListener('click', function (e) {
+            const rect = this.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple-span';
+            ripple.style.left = (e.clientX - rect.left - 10) + 'px';
+            ripple.style.top = (e.clientY - rect.top - 10) + 'px';
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 700);
+
+            window.location.href = 'mailto:3laa.sohail@gmail.com?subject=Let\'s%20work%20together';
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Initialize
+        observeElements();
+        window.addEventListener('scroll', () => {
+            updateScrollProgress();
+            backToTopButton.classList.toggle('visible', window.scrollY > 400);
+        });
+        updateScrollProgress();
+    </script>
+</body>
+
+</html>

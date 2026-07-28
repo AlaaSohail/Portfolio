@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Alaa Amer</title>
+    <link rel="icon" type="image/png" href="images/favicon.webp" sizes="32x32">
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Geist', sans-serif;
+            background: #0F1419;
+            color: white;
+            min-height: 100vh;
+            padding: 40px 24px;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #141C24, #10161C);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 36px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: #00D9FF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hero {
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .meta {
+            color: #9aa4b2;
+            margin-bottom: 24px;
+        }
+
+        .content p {
+            color: #cfd6de;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin: 24px 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        .card h3 {
+            color: #00D9FF;
+            font-size: 14px;
+            margin-bottom: 8px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .card p {
+            color: #9aa4b2;
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9aa4b2;
+            font-size: 12px;
+            border-radius: 999px;
+        }
+
+        .image {
+            width: 100%;
+            border-radius: 14px;
+            margin-top: 22px;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a class="back" href="index.html">← Back to portfolio</a>
+        <div class="hero">
+            <h1 id="project-title">Project</h1>
+            <div class="meta" id="project-meta"></div>
+        </div>
+        <div class="content" id="project-content"></div>
+    </div>
+
+    <script>
+        const projects = {
+            gymmer: {
+                title: 'Gymmer',
+                meta: 'Flutter · Mobile App · 2025',
+                image: 'images/gymmer.webp',
+                description: 'Gymmer is a fitness companion app designed to help users build consistent routines with personalized plans, progress tracking, and an encouraging community experience. The product was crafted to feel motivating from the first screen and dependable through daily use.',
+                challenge: 'The client needed an app that felt motivating, lightweight, and useful every day without becoming overwhelming.',
+                solution: 'I designed a focused onboarding experience, simple workout flows, and a clear progress system that made habits feel achievable.',
+                result: 'The experience now feels polished, encouraging, and easy to return to — which is essential for a fitness product.'
+            },
+            'plant-care-ai': {
+                title: 'Plant Care AI',
+                meta: 'Flutter · Healthcare · 2026',
+                image: 'images/plant.webp',
+                description: 'Plant Care AI helps users identify plants and understand health issues through a practical, approachable experience. The app blends AI guidance with a simple design so care instructions feel useful and easy to act on.',
+                challenge: 'The main challenge was making complex care guidance feel simple and actionable for everyday users.',
+                solution: 'I built a clean, guided experience with clear recommendations and a friendly interface that lowered the entry barrier for new users.',
+                result: 'The app now communicates care advice in a way that feels approachable, trustworthy, and easy to follow.'
+            },
+            'shoppe-ecommerce': {
+                title: 'Shoppe E-commerce',
+                meta: 'Flutter · E-commerce · 2023',
+                image: 'images/shop.webp',
+                description: 'Shoppe is a polished e-commerce experience focused on fast browsing and a premium checkout flow. The experience was designed to feel calm and reliable while still delivering the energy of a modern shopping app.',
+                challenge: 'The product needed to make shopping feel smooth and premium while keeping the flow simple and conversion-focused.',
+                solution: 'I focused on product discovery, cart behavior, and a frictionless checkout experience that helped guide users confidently.',
+                result: 'The final experience feels modern, fast, and conversion-friendly without sacrificing visual quality.'
+            },
+            opsboard: {
+                title: 'OpsBoard',
+                meta: 'Flutter · Productivity · 2024',
+                image: 'images/plant.webp',
+                description: 'OpsBoard is a productivity app built for small teams that need a simple system for daily coordination. It helps keep tasks, deadlines, and handoffs visible without overwhelming the user.',
+                challenge: 'The team needed a structured way to manage workflows without adding too much complexity to daily use.',
+                solution: 'I created a modular interface with clear task views, reminders, and a workflow that supported fast decisions and handoffs.',
+                result: 'The app now gives teams a practical tool for staying organized while keeping the experience lightweight.'
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const slug = params.get('project');
+        const project = projects[slug] || projects.gymmer;
+
+        document.getElementById('project-title').textContent = project.title;
+        document.getElementById('project-meta').textContent = project.meta;
+        document.getElementById('project-content').innerHTML = `
+            <p>${project.description}</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Challenge</h3>
+                    <p>${project.challenge}</p>
+                </div>
+                <div class="card">
+                    <h3>Solution</h3>
+                    <p>${project.solution}</p>
+                </div>
+                <div class="card">
+                    <h3>Result</h3>
+                    <p>${project.result}</p>
+                </div>
+            </div>
+            <div class="tags">
+                <span class="tag">Flutter</span>
+                <span class="tag">UI/UX</span>
+                <span class="tag">Product Thinking</span>
+            </div>
+            <img class="image" src="${project.image}" alt="${project.title}">
+        `;
+    </script>
+</body>
+
+</html>
